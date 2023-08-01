@@ -39,8 +39,9 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
+// model require
 db.railway_section = require("./RailwaySection.js")(sequelize, Sequelize.DataTypes)
+db.users = require("./Users.js")(sequelize, Sequelize.DataTypes)
 
 sequelize
   .sync({ force: false })
