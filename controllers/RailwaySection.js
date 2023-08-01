@@ -1,6 +1,7 @@
 const db = require("../models");
 const RailwaySection = db.railway_section
 
+// 검침 대상이 되는 구간 정보 read
 const getAllRailwaySection = async (req, res) => {
     try {
         const railwaySections = await RailwaySection.findAll();
