@@ -12,6 +12,8 @@ const addUser = async (req, res) => {
         user_email: req.body.user_email,
         user_cellphone: req.body.user_cellphone,
         user_company: req.body.user_company,
+        // 대분류까지의 분야를 추가해야함
+        // 생년월일도 받아야할듯. 휴대번호 인증까지는 안되니까...
         is_admin: 0,
     };
     try {
