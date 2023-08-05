@@ -2,7 +2,7 @@
 
 module.exports = ( sequelize, DataTypes ) => {
     const ChecklistResult = sequelize.define('ChecklistResult', {
-        id: {
+          id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: false,
