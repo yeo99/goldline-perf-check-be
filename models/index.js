@@ -44,6 +44,8 @@ db.railway_section = require("./RailwaySection.js")(sequelize, Sequelize.DataTyp
 db.railway_station = require("./RailwayStation.js")(sequelize, Sequelize.DataTypes)
 db.facilities_high_class = require("./FacilitiesHighClass.js")(sequelize, Sequelize.DataTypes)
 db.facilities_middle_class = require("./FacilitiesMiddleClass.js")(sequelize, Sequelize.DataTypes)
+db.facilities_low_class = require("./FacilitiesLowClass.js")(sequelize, Sequelize.DataTypes)
+db.facilities_lowest_class = require("./FacilitiesLowestClass.js")(sequelize, Sequelize.DataTypes)
 db.users = require("./Users.js")(sequelize, Sequelize.DataTypes)
 
 sequelize
