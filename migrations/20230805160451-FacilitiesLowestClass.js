@@ -6,13 +6,13 @@ module.exports = {
     await queryInterface.createTable("facilities_lowest_class", {
       id: {
         type: Sequelize.STRING,
-        allowestNull: false,
+        allowNull: false,
         autoIncrement: false,
         primaryKey: true,
       },
       facility_code: {
         type: Sequelize.STRING,
-        allowestNull: false,
+        allowNull: false,
       },
       upper_category: {
         type: Sequelize.STRING,
