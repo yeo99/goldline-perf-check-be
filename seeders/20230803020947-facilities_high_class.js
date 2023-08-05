@@ -3,24 +3,18 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
-   
+    const facilitiesHighClass = [
+      { id: 'A000', facility_code: '구조물' },
+      { id: 'B000', facility_code: '궤도시설' },
+      { id: 'C000', facility_code: '건축물' },
+      { id: 'D000', facility_code: '전철전력설비' },
+      { id: 'E000', facility_code: '신호제어설비' }
+    ]
+
+    await queryInterface.bulkInsert('facilities_high_class', facilitiesHighClass, {})
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    return queryInterface.bulkDelete('facilities_high_class', null, {})
   }
 };
