@@ -3,9 +3,10 @@
 module.exports = (sequelize, DataTypes) => {
     const FacilitiesHighClass = sequelize.define('FacilitiesHighClass', {
             id: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.STRING,
                 allowNull: false,
-                autoIncrement: false
+                autoIncrement: false,
+                primaryKey: true,
             },
             facility_code: {
                 type: DataTypes.STRING,
@@ -14,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         }, {
             modelName: 'FacilitiesHighClass',
-            tableName: 'facility_high_class',
+            tableName: 'facilities_high_class',
             timestamps: false,
         }
     )
