@@ -28,6 +28,16 @@ module.exports = ( sequelize, DataTypes ) => {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        // 요청사항: 담당 대분류 추가
+        user_charge: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        // 요청사항: 유저 생년월일 추가
+        user_birth_date: {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
         user_company: {
             type: DataTypes.STRING,
             // 재직 회사가 없을수도?
