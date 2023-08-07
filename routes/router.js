@@ -9,6 +9,8 @@ const { getAllRailwayStation } = require('../controllers/RailwayStation')
 const { getAllFacilitiesHighClass } = require('../controllers/FacilitiesHighClass')
 // 중분류 검색 controller
 const { getFacilitiesMiddleClass } = require('../controllers/FacilitiesMiddleClass')
+// 소분류 검색 controller
+const { getFacilitiesLowClass } = require('../controllers/FacilitiesLowClass')
 
 
 router.get('/railway/sections', getAllRailwaySection)
@@ -16,5 +18,6 @@ router.get('/railway/stations', getAllRailwayStation)
 
 router.get('/facilities/high-class/', getAllFacilitiesHighClass)
 router.get('/facilities/middle-class/:upper_category', getFacilitiesMiddleClass)
+router.get('/facilities/low-class/:upper_category', getFacilitiesLowClass)
 
 module.exports = router
