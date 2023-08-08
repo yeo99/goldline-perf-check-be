@@ -11,6 +11,8 @@ const { getAllFacilitiesHighClass } = require('../controllers/FacilitiesHighClas
 const { getFacilitiesMiddleClass } = require('../controllers/FacilitiesMiddleClass')
 // 소분류 검색 controller
 const { getFacilitiesLowClass } = require('../controllers/FacilitiesLowClass')
+// 세분류 검색 controller
+const { getFacilitiesLowestClass } = require('../controllers/FacilitiesLowestClass')
 
 // 노선(A역-B역)
 router.get('/railway/sections', getAllRailwaySection)
@@ -22,6 +24,8 @@ router.get('/facilities/high-class/', getAllFacilitiesHighClass)
 router.get('/facilities/middle-class/:upper_category', getFacilitiesMiddleClass)
 // 소분류 시설 코드
 router.get('/facilities/low-class/:upper_category', getFacilitiesLowClass)
+// 세분류 시설 코드
+router.get('/facilities/lowest-class/:upper_category', getFacilitiesLowestClass)
 
 
 // 로그아웃
