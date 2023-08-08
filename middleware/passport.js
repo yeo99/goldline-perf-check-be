@@ -21,11 +21,11 @@ module.exports = () => {
         User.findOne({
             where : { user_id }
         })
-        .then(user => {
+        .then(async user => {
             if (!user) {
                 return done(null, false, { message : '잘못된 아이디 입니다.' })
             }
-            if (!user.validPassword(user_password)) {
+            if (!(await user.validPassword(user_password))) {
                 return done(null, false, {message : '잘못된 비밀번호 입니다.'})
             }
             return done(null, user)
