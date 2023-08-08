@@ -35,5 +35,14 @@ router.get('/logout', (req, res) => {
     res.redirect('/')
 })
 
+// 마이페이지 임시
+// router.get('/profile', (req, res) => {
+//     if (req.user) {
+//         res.send('이미 로그인 되어있습니다.');
+//     } else {
+//         res.send('로그인 후 이용해주세요.');
+//     }
+// })
+
 
 module.exports = router
