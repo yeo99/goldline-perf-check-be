@@ -1,4 +1,11 @@
-require('dotenv').config();
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config({ path: '.env.development' });
+} else if (process.env.NODE_ENV === 'test') {
+  require('dotenv').config({ path: '.env.test' })
+} else {
+  require('dotenv').config()
+}
+
 const env = process.env
 
 const development = {
@@ -25,4 +32,5 @@ const development = {
 //   dialect:mysql
 // };
 
+// module.exports = { development, test, production }
 module.exports = { development }
