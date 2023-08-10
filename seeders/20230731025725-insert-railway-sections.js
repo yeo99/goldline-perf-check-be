@@ -45,6 +45,6 @@ module.exports = {
      * in terminal,
      * sequelize db:seed:undo:all
      */
-    return queryInterface.bulkDelete('railway_section', null, {});
+    return queryInterface.bulkDelete('railway_sections', null, {});
   }
 };

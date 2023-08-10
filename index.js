@@ -9,7 +9,7 @@ const router = require('./routes/router')
 
 require("./models/index");
 const corsOption = {
-    origin: "https://localhost:3000",
+    origin: "http://localhost:3001",
 };
 
 app.set("port", process.env.PORT || 3000);
