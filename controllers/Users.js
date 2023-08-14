@@ -3,6 +3,9 @@ const User = db.users
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 
+// middlewares
+const { isValidEmail, isValidLength, isValidPassword } = require('../middleware/validators/validate')
+
 /**
  * 회원가입
  */
@@ -21,11 +24,26 @@ const addUser = async (req, res) => {
         // 관리자 계정은 수동 생성
         is_admin: 0,
     };
+    
+    if(!isValidLength(info.user_id, 5, 20)) {
+        return res.status(400).json({ error: "아이디는 5~20자 이내로 입력해주세요" });
+    }
+
+    if(!isValidPassword(info.user_password)) {
+        return res.status(400).json({ error: "비밀번호는 알파벳, 숫자, 특수문자를 포함한 8~16자 이내로 입력해주세요." });
+    }
+
+    if(!isValidEmail(info.user_email)) {
+        return res.status(400).json({ error: "유효한 이메일 주소를 입력해주세요." })
+    }
+
     try {
         await User.create(info)
         res.status(200).json()
     } catch ( error ) {
-        res.status(500).json({ error: message })
+        // 실제 서버의 오류 내용을 그대로 전달하는 것은 보안 문제를 일으킬수도,, 수정
+        console.error("회원가입 오류: ", error)
+        res.status(500).json({ error: "회원가입 중 오류가 발생했습니다. 다시 시도해주세요." })
     }
 }
 
