@@ -35,7 +35,7 @@ module.exports = ( sequelize, DataTypes ) => {
         },
         // 요청사항: 유저 생년월일 추가
         user_birth_date: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             allowNull: false
         },
         user_company: {

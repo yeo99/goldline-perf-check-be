@@ -43,7 +43,7 @@ module.exports = {
       },
       // 요청사항: 유저 생년월일 추가
       user_birth_date: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false,
       },
       user_company: {
