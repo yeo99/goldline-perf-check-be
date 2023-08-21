@@ -24,7 +24,19 @@ const addUser = async (req, res) => {
         // 관리자 계정은 수동 생성
         is_admin: 0,
     };
-    
+
+    // 중복된 user_id 검사
+    const existingUserById = await User.findOne({ where: { user_id: info.user_id } });
+    if (existingUserById) {
+        return res.status(409).json({ error: "이미 사용 중인 아이디입니다." });
+    }
+
+    // 중복된 user_email 검사
+    const existingUserByEmail = await User.findOne({ where: { user_email: info.user_email } });
+    if (existingUserByEmail) {
+        return res.status(409).json({ error: "이미 사용 중인 이메일 주소입니다." })
+    }
+
     if(!isValidLength(info.user_id, 5, 20)) {
         return res.status(400).json({ error: "아이디는 5~20자 이내로 입력해주세요" });
     }
