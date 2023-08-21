@@ -25,7 +25,7 @@ module.exports = ( sequelize, DataTypes ) => {
             allowNull: false,
         },
         user_cellphone: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         // 요청사항: 담당 대분류 추가

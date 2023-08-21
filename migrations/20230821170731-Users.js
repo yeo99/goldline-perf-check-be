@@ -3,12 +3,6 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    /**
-     * Add altering commands here.
-     *
-     * Example:
-     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
-     */
     queryInterface.createTable("users", {
       id: {
         type: Sequelize.INTEGER,
@@ -33,7 +27,7 @@ module.exports = {
         allowNull: false,
       },
       user_cellphone: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       // 요청사항: 담당 대분류 추가
@@ -58,12 +52,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
     queryInterface.dropTable("Users")
   }
 };
