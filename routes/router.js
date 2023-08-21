@@ -13,6 +13,8 @@ const { getFacilitiesMiddleClass } = require('../controllers/FacilitiesMiddleCla
 const { getFacilitiesLowClass } = require('../controllers/FacilitiesLowClass')
 // 세분류 검색 controller
 const { getFacilitiesLowestClass } = require('../controllers/FacilitiesLowestClass')
+// 회원 controller
+const { addUser } = require('../controllers/Users')
 
 // 노선(A역-B역)
 router.get('/railway/sections', getAllRailwaySection)
@@ -26,6 +28,8 @@ router.get('/facilities/middle-class/:upper_category', getFacilitiesMiddleClass)
 router.get('/facilities/low-class/:upper_category', getFacilitiesLowClass)
 // 세분류 시설 코드
 router.get('/facilities/lowest-class/:upper_category', getFacilitiesLowestClass)
+// 회원가입
+router.post('/register', addUser)
 
 
 // 로그아웃
