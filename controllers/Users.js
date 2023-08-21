@@ -25,6 +25,18 @@ const addUser = async (req, res) => {
         is_admin: 0,
     };
 
+    if(!isValidLength(info.user_id, 5, 20)) {
+        return res.status(400).json({ error: "아이디는 5~20자 이내로 입력해주세요." });
+    }
+
+    if(!isValidPassword(info.user_password)) {
+        return res.status(400).json({ error: "비밀번호는 알파벳, 숫자, 특수문자를 포함한 8~16자 이내로 입력해주세요." });
+    }
+
+    if(!isValidEmail(info.user_email)) {
+        return res.status(400).json({ error: "유효한 이메일 주소를 입력해주세요." })
+    }
+
     // 중복된 user_id 검사
     const existingUserById = await User.findOne({ where: { user_id: info.user_id } });
     if (existingUserById) {
@@ -37,21 +49,9 @@ const addUser = async (req, res) => {
         return res.status(409).json({ error: "이미 사용 중인 이메일 주소입니다." })
     }
 
-    if(!isValidLength(info.user_id, 5, 20)) {
-        return res.status(400).json({ error: "아이디는 5~20자 이내로 입력해주세요" });
-    }
-
-    if(!isValidPassword(info.user_password)) {
-        return res.status(400).json({ error: "비밀번호는 알파벳, 숫자, 특수문자를 포함한 8~16자 이내로 입력해주세요." });
-    }
-
-    if(!isValidEmail(info.user_email)) {
-        return res.status(400).json({ error: "유효한 이메일 주소를 입력해주세요." })
-    }
-
     try {
         await User.create(info)
-        res.status(200).json()
+        res.status(201).json({ message: "회원가입이 완료되었습니다." })
     } catch ( error ) {
         // 실제 서버의 오류 내용을 그대로 전달하는 것은 보안 문제를 일으킬수도,, 수정
         console.error("회원가입 오류: ", error)
