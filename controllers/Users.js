@@ -18,13 +18,13 @@ const addUser = async (req, res) => {
         user_cellphone: req.body.user_cellphone,
         // 담당 대분류
         user_charge: req.body.user_charge,
-        user_birthdate: req.body.user_birthdate,
+        user_birth_date: req.body.user_birth_date,
         // 소속 사명(nullable)
         user_company: req.body.user_company,
         // 관리자 계정은 수동 생성
         is_admin: 0,
     };
-
+    
     if(!isValidLength(info.user_id, 5, 20)) {
         return res.status(400).json({ error: "아이디는 5~20자 이내로 입력해주세요." });
     }
