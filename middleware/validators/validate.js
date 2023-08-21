@@ -13,7 +13,7 @@ const isValidEmail = (email) => {
 /**
  * 문자열 길이 검증 로직(input)
  */
-const isValidLength = (input, min, max) => {
+const isValidLength = (input='', min, max) => {
     return input.length >= min && input.length <= max;
 }
 
