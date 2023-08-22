@@ -14,7 +14,7 @@ const { getFacilitiesLowClass } = require('../controllers/FacilitiesLowClass')
 // 세분류 검색 controller
 const { getFacilitiesLowestClass } = require('../controllers/FacilitiesLowestClass')
 // 회원 controller
-const { addUser, userLogin } = require('../controllers/Users')
+const { addUser, userLogin, userLogout } = require('../controllers/Users')
 
 // 노선(A역-B역)
 router.get('/railway/sections', getAllRailwaySection)
@@ -32,6 +32,8 @@ router.get('/facilities/lowest-class/:upper_category', getFacilitiesLowestClass)
 router.post('/register', addUser)
 // 로그인
 router.post('/login', userLogin)
+// 로그아웃
+router.get('/logout', userLogout)
 
 // 로그인 상태 확인 middleware
 const requireAuth = require('../middleware/auth')
@@ -40,12 +42,6 @@ router.get('/auth/check', requireAuth, (req, res) => {
 })
 
 
-// 로그아웃
-router.get('/logout', (req, res) => {
-    req.logout();
-    // 로그인 페이지로 리다이렉트 하는게 더 깔끔할 듯 싶다
-    res.redirect('/')
-})
 
 // 마이페이지 임시
 // router.get('/profile', (req, res) => {

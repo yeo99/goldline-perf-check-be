@@ -104,6 +104,22 @@ const userLogin = async (req, res, next) => {
 }
 
 /**
+ * 로그아웃
+ */
+const userLogout = (req, res, next) => {
+    req.session.destroy((err) => {
+        if (err) { 
+            console.error("세션 파기 중 오류 발생:", err);
+            return res.status(500).json({ error: "로그아웃 중 오류가 발생했습니다." });
+        }
+
+        // 세션 쿠키 제거
+        res.clearCookie('connect.sid', { path: '/' });
+        res.status(200).json({ message: "로그아웃 되었습니다." });
+    });
+}
+
+/**
  * 회원정보 수정
  */
 
@@ -127,4 +143,5 @@ User.prototype.validPassword = function(password) {
 module.exports = {
     addUser,
     userLogin,
+    userLogout,
 }
