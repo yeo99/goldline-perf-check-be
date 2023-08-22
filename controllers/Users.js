@@ -49,6 +49,16 @@ const addUser = async (req, res) => {
         return res.status(409).json({ error: "이미 사용 중인 이메일 주소입니다." })
     }
 
+    // 비밀번호 암호화
+    const saltRounds = 10;
+    bcrypt.hash(info.user_password, saltRounds, async(err, hashedPassword) => {
+        if (err) {
+            console.error("비밀번호 암호화 오류 : ", err);
+            return res.status(500).json({ error: "비밀번호 암호화 중 오류가 발생했습니다. 다시 시도해주세요." })
+        }
+        info.user_password = hashedPassword;
+    })
+
     try {
         await User.create(info)
         res.status(201).json({ message: "회원가입이 완료되었습니다." })
@@ -63,14 +73,26 @@ const addUser = async (req, res) => {
  * 회원 로그인
  */
 const userLogin = async (req, res, next) => {
-    passport.authenticate('local', (err, user, info) => {
+    passport.authenticate('local', async (err, user, info) => {
         if (err) {
             return next(err);
         }
         if (!user) {
             // info에 실패메세지가 담겨있음
-            return res.status(400).json(info)
+            return res.status(400).json({ error: "존재하지 않는 아이디 입니다." })
         }
+
+        // 사용자가 입력한 비밀번호와 데이터베이스의 암호화된 비밀번호 비교
+        try {
+            const isValidPassword = await bcrypt.compare(req.body.user_password, user.user_password);
+            if (!isValidPassword) {
+                res.status(401).json({ error: "잘못된 비밀번호 입니다." })
+            }
+        } catch (error) {
+            console.error("비밀번호 비교 중 오류: ", error)
+        }
+
+
         // 세션에 사용자 정보 입력
         req.logIn(user, (err) => {
             if (err) {
