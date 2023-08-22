@@ -84,10 +84,11 @@ const userLogin = async (req, res, next) => {
         try {
             const isValidPassword = await bcrypt.compare(req.body.user_password, user.user_password);
             if (!isValidPassword) {
-                res.status(401).json({ error: "잘못된 비밀번호 입니다." })
+                return res.status(401).json({ error: "잘못된 비밀번호 입니다." })
             }
         } catch (error) {
             console.error("비밀번호 비교 중 오류: ", error)
+            return res.status(500).json({ error: "비밀번호 검증 중 오류가 발생하였습니다."})
         }
 
 

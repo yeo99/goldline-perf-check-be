@@ -1,6 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
-const User = require('../models/Users')
+const { users } = require('../models');
+
 
 module.exports = () => {
     passport.serializeUser((user, done) => {
@@ -8,7 +9,7 @@ module.exports = () => {
     });
 
     passport.deserializeUser((id, done) => {
-        User.findByPk(id)
+        users.findByPk(id)
             .then(user => done(null, user))
             .catch(err => done(err))
     });
@@ -18,7 +19,7 @@ module.exports = () => {
         usernameField: 'user_id',
         passwordField: 'user_password'
     }, (user_id, user_password, done) => {
-        User.findOne({
+        users.findOne({
             where : { user_id }
         })
         .then(async user => {
