@@ -5,8 +5,12 @@ module.exports = ( sequelize, DataTypes ) => {
           id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            autoIncrement: false,
+            autoIncrement: true,
             primaryKey: true,
+          },
+          check_manager_id: {
+            type: DataTypes.STRING,
+            allowNull: false,
           },
           station_name: {
             type: DataTypes.STRING,

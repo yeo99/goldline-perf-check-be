@@ -7,8 +7,12 @@ module.exports = {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        autoIncrement: false,
+        autoIncrement: true,
         primaryKey: true,
+      },
+      check_manager_id: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       station_name: {
         type: Sequelize.STRING,
@@ -86,7 +90,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      // createdAt, updatedAt(Auto timestamps)
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false
+      }
     })
   },
 
