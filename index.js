@@ -10,6 +10,7 @@ const router = require('./routes/router')
 require("./models/index");
 const corsOption = {
     origin: "http://localhost:3001",
+    credentials: true,
 };
 
 app.set("port", process.env.PORT || 3000);
@@ -23,6 +24,11 @@ app.use(session({
     secret: 'secret code',
     resave: false,
     saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60, // 한 시간으로 설정
+        secure: process.env.NODE_ENV === 'production',
+    }
 }));
 app.use(passport.initialize());
 app.use(passport.session());

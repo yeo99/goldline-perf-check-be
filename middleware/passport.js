@@ -17,7 +17,9 @@ module.exports = () => {
     passport.use(new LocalStrategy({
         // 키값을 input form의 속성과 일치시켜야 함
         usernameField: 'user_id',
-        passwordField: 'user_password'
+        passwordField: 'user_password',
+        session: true,
+        passReqToCallback: false,
     }, (user_id, user_password, done) => {
         users.findOne({
             where : { user_id }
