@@ -77,7 +77,7 @@ const userLogin = async (req, res, next) => {
         }
         if (!user) {
             // info에 실패메세지가 담겨있음
-            return res.status(400).json({ error: "존재하지 않는 아이디 입니다." })
+            return res.status(400).json({ error: info.message })
         }
 
         // 사용자가 입력한 비밀번호와 데이터베이스의 암호화된 비밀번호 비교

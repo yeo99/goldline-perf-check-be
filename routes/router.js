@@ -33,6 +33,12 @@ router.post('/register', addUser)
 // 로그인
 router.post('/login', userLogin)
 
+// 로그인 상태 확인 middleware
+const requireAuth = require('../middleware/auth')
+router.get('/auth/check', requireAuth, (req, res) => {
+    res.json({ isAuthenticated: true });
+})
+
 
 // 로그아웃
 router.get('/logout', (req, res) => {
