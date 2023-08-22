@@ -16,13 +16,10 @@ const addUser = async (req, res) => {
         user_name: req.body.user_name,
         user_email: req.body.user_email,
         user_cellphone: req.body.user_cellphone,
-        // 담당 대분류
-        user_charge: req.body.user_charge,
+        user_charge: req.body.user_charge, // 담당 대분류
         user_birth_date: req.body.user_birth_date,
-        // 소속 사명(nullable)
-        user_company: req.body.user_company,
-        // 관리자 계정은 수동 생성
-        is_admin: 0,
+        user_company: req.body.user_company, // 소속 사명(nullable)
+        is_admin: req.body.is_admin, // 관리자 계정은 수동 생성
     };
     
     if(!isValidLength(info.user_id, 5, 20)) {
@@ -50,14 +47,15 @@ const addUser = async (req, res) => {
     }
 
     // 비밀번호 암호화
-    const saltRounds = 10;
-    bcrypt.hash(info.user_password, saltRounds, async(err, hashedPassword) => {
-        if (err) {
-            console.error("비밀번호 암호화 오류 : ", err);
-            return res.status(500).json({ error: "비밀번호 암호화 중 오류가 발생했습니다. 다시 시도해주세요." })
-        }
+    try {
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(info.user_password, saltRounds)
         info.user_password = hashedPassword;
-    })
+        
+    } catch (err) {
+        console.error("비밀번호 암호화 오류 : ", err);
+        return res.status(500).json({ error: "비밀번호 암호화 중 오류가 발생했습니다. 다시 시도해주세요." })
+    }
 
     try {
         await User.create(info)
