@@ -9,11 +9,11 @@ const router = require('./routes/router')
 
 require("./models/index");
 const corsOption = {
-    origin: "http://localhost:3001",
+    origin: "http://localhost:3000",
     credentials: true,
 };
 
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 5000);
 
 // Middleware
 app.use(cors(corsOption))
