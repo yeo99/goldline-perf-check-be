@@ -250,6 +250,9 @@ $RECYCLE.BIN/
 
 ### dotenv ###
 .env
+.env.development
+.env.test
+.env.production
 
 # and uncomment the following lines
 # .pnp.*
