@@ -9,7 +9,7 @@ const router = require('./routes/router')
 
 require("./models/index");
 const corsOption = {
-    origin: "http://localhost:3000",
+    origin: `http://${process.env.DB_HOST}:3000`,
     credentials: true,
 };
 
