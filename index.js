@@ -9,7 +9,7 @@ const router = require('./routes/router')
 
 require("./models/index");
 const corsOption = {
-    origin: `http://${process.env.DB_HOST}:3000`,
+    origin: `http://127.0.0.1:3000`,
     credentials: true,
 };
 
@@ -40,7 +40,7 @@ require('./middleware/passport')(passport)
 app.use('/', router)
 
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../gold-line-perf-check-fe', 'index.html'));
+    res.sendFile(path.join(__dirname, '../gold-line-perf-check-fe/build/index.html'));
 });
 
 app.listen(app.get("port"), () => {
