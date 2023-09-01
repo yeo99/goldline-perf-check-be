@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const cors = require("cors")
+const path = require('path');
 const app = express()
 const session = require('express-session');
 const passport = require('passport');
@@ -35,6 +36,9 @@ app.use(passport.session());
 
 // Passport
 require('./middleware/passport')(passport)
+
+// 정적 파일 사용
+app.use(express.static(path.join(__dirname, '../gold-line-perf-check-fe/build')));
 
 // routes
 app.use('/', router)
