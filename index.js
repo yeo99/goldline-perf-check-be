@@ -10,7 +10,7 @@ const router = require('./routes/router')
 
 require("./models/index");
 const corsOption = {
-    origin: `http://127.0.0.1:3000`,
+    origin: process.env.IP,
     credentials: true,
 };
 
