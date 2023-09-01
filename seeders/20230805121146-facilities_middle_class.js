@@ -35,6 +35,15 @@ module.exports = {
       { id: 'E200', facility_code: '열차제어장치', upper_category: 'E000' },
       { id: 'E300', facility_code: '선로전환장치', upper_category: 'E000' },
       { id: 'E400', facility_code: '안전설비', upper_category: 'E000' },
+
+      // 정보통신설비
+      { id: 'F100', facility_code: '선로설비', upper_category: 'F000' },
+      { id: 'F200', facility_code: '전송설비', upper_category: 'F000' },
+      { id: 'F300', facility_code: '무선설비', upper_category: 'F000' },
+      { id: 'F400', facility_code: '전화교환설비', upper_category: 'F000' },
+      { id: 'F500', facility_code: '역무통신설비', upper_category: 'F000' },
+      { id: 'F600', facility_code: '영상설비', upper_category: 'F000' },
+      { id: 'F700', facility_code: '역무자동설비', upper_category: 'F000' },
     ]
 
     await queryInterface.bulkInsert('facilities_middle_class', facilitiesMiddleClass, {})

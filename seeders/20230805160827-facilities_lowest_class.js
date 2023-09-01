@@ -59,6 +59,54 @@ module.exports = {
 
       // 열차보호 안전설비(E410)
       { id: 'E411', facility_code: '분기기 융설장치', upper_category: 'E410' },
+
+      // { id: '', facility_code: '', upper_category: '' },
+      // 광케이블(F110)
+      { id: 'F111', facility_code: '광케이블', upper_category: 'F110' },
+      // 동케이블(F120)
+      { id: 'F121', facility_code: '누설동축케이블', upper_category: 'F120' },
+
+      // 광다중화설비(F210)
+      { id: 'F211', facility_code: 'MPLS', upper_category: 'F210' },
+      { id: 'F212', facility_code: '정류기', upper_category: 'F210' },
+
+      // LTE-R(F310)
+      { id: 'F311', facility_code: '중앙제어설비', upper_category: 'F310' },
+      { id: 'F312', facility_code: '관제조작반', upper_category: 'F310' },
+
+      // LTE-기지국 설비(F320)
+      { id: 'F321', facility_code: 'DU', upper_category: 'F320' },
+      { id: 'F322', facility_code: 'RRU', upper_category: 'F320' },
+      { id: 'F323', facility_code: '안테나', upper_category: 'F320' },
+
+      // 행성안내설비(F510)
+      { id: 'F511', facility_code: '중앙제어설비(관제)', upper_category: 'F510' },
+      { id: 'F512', facility_code: '역서버', upper_category: 'F510' },
+      { id: 'F513', facility_code: '행성안내게시기', upper_category: 'F510' },
+
+      // 구내방송설비(F520)
+      { id: 'F521', facility_code: '자동안내방송주장치', upper_category: 'F520' },
+      { id: 'F522', facility_code: '자동안내방송 역장치', upper_category: 'F520' },
+
+      // 영상감시 설비(F610)
+      { id: 'F611', facility_code: '영상주체어서버', upper_category: 'F610' },
+      { id: 'F612', facility_code: '영상저장서버', upper_category: 'F610' },
+      { id: 'F613', facility_code: '영상운영장치', upper_category: 'F610' },
+      { id: 'F614', facility_code: '영상표출장치', upper_category: 'F610' },
+      { id: 'F615', facility_code: '카메라', upper_category: 'F610' },
+
+      // 전산장치(F710)
+      { id: 'F711', facility_code: '중앙전산기', upper_category: 'F710' },
+      { id: 'F712', facility_code: '역단위전산기', upper_category: 'F710' },
+
+      // 발매기(F720)
+      { id: 'F721', facility_code: '1회권발매기', upper_category: 'F720' },
+      { id: 'F722', facility_code: '교통카드투입/정산충전기', upper_category: 'F720' },
+      { id: 'F723', facility_code: '보증금환급기', upper_category: 'F720' },
+
+      // 게이트(F730)
+      { id: 'F731', facility_code: '자동개/집표기(일반)', upper_category: 'F730' },
+      { id: 'F732', facility_code: '자동개/집표기(장애)', upper_category: 'F730' },
     ]
 
     await queryInterface.bulkInsert('facilities_lowest_class', facilitiesLowestClass, {})
