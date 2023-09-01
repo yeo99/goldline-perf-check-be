@@ -39,6 +39,10 @@ require('./middleware/passport')(passport)
 // routes
 app.use('/', router)
 
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../gold-line-perf-check-fe', 'index.html'));
+});
+
 app.listen(app.get("port"), () => {
     console.log(app.get("port"), "번 포트에서 대기 중")
 })
